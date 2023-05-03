@@ -1,10 +1,5 @@
 
 # Mech105Algorithms
-Algorithms for CSU Mech 105 class
-
-
-UPDATED
-2.0000
-3.00001
-4.0001
+---
+This folder contains all of the major algorithms I have created in Colorado State University's Mech105 class.
 
