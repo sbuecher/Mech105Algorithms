@@ -1,5 +1,5 @@
-function [root, fx, ea, iter] = falsepos(func, xl, xu, es, maxit)
-%falsepos uses the false positon method to determine the root of a
+function [root, fx, ea, iter] = bisectionMethod(func, xl, xu, es, maxit)
+%bisectionMethod uses the bisection method to determine the root of a
 %function
 %
 %Inputs:
@@ -20,7 +20,8 @@ end
 % lies within the bounds given
 test = func(xl)*func(xu);
 if test > 0
-    error('no sign change within these bounds. Make sure root lies within starting bounds')
+    error(['no sign change within these bounds. Make sure root ' ...
+        'lies within starting bounds'])
 end
 
 if nargin < 4 || isempty(es)
@@ -30,7 +31,6 @@ if nargin < 5 || isempty(maxit)
     maxit = 200;
 end
 
-
 %initialize the function
 iter = 0;
 xr = xl;
@@ -39,11 +39,13 @@ ea = 100;
 %Find the root
 while(1)
     xrold = xr;
-    xr = xu-func(xu)*(xl-xu)/func(xl)-func(xu); %the new xr is the rise over run beteween the two points
+    xr = (xl+xu)/2; %xr is point bisecting xl and xu
     iter = iter+1; %change iteration
-    if xr ~= 0 %error is new minus old over new times 100
-        ea = abs((xr-xrold)/xr)*100;
+    %find relative error between last guess and current guess
+    if xr ~= 0
+        ea = abs((xr-xrold)/xr)*100; 
     end
+    %if xl or xu has same sign as xr, change old xl or xu to xr
     test = func(xl)*func(xr);
     if test < 0
         xu = xr;
@@ -52,6 +54,7 @@ while(1)
     else
         ea = 0;
     end
+    % go until error condition is met or max iterations is reached
     if ea <= es || iter >= maxit
         break
     end
