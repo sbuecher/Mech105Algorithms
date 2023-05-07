@@ -1,6 +1,9 @@
-** Linear Regression
+*** Linear Regression
 
 linearRegression Computes the linear regression of a data set
+
+This could be used to either interpolate or extrapolate a data set, for example it could be used to
+predict rainfall during certain times of the year based on previous years
 
    Compute the linear regression based on inputs:
 

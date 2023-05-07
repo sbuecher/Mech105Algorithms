@@ -1,6 +1,8 @@
-** MATLAB Simpson method code
+*** MATLAB Simpson method code
 
-This code contains a MATLAB function that integrates a table of value using Simpson's method
+This code contains a MATLAB function that integrates a table of values using Simpson's method
+
+This could be used to find the displacement of an object when given a table of velocity and time 
 
 Numerical evaluation of integral by Simpson's 1/3 Rule
  Inputs
